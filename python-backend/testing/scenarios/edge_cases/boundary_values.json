@@ -1,0 +1,76 @@
+{
+  "category": "boundary_values",
+  "description": "Edge cases and boundary value testing scenarios",
+  "scenarios": [
+    {
+      "id": "BV001",
+      "name": "Extremely Long User Input",
+      "description": "User sends very long message",
+      "user_input": "我想查询我的航班信息，确认号是ABC123。另外我还想知道行李政策、退票政策、改签政策、会员权益、特殊服务、餐食选择、座位偏好、里程累积规则、合作伙伴航空公司、代码共享航班、联程航班、中转服务、贵宾休息室、优先登机、优先行李、额外行李额度、超重行李费用、违禁品清单、液体携带规定、电子设备使用规定、机上WiFi、机上娱乐、机上餐食、婴儿服务、儿童服务、老年人服务、残障人士服务、孕妇服务、医疗服务、宠物运输、特殊行李、乐器运输、体育器材、易碎物品包装...",
+      "expected_behavior": "Agent should handle long input without errors"
+    },
+    {
+      "id": "BV002",
+      "name": "Empty User Input",
+      "description": "User sends empty or whitespace-only message",
+      "user_input": "   ",
+      "expected_behavior": "Agent should prompt for valid input"
+    },
+    {
+      "id": "BV003",
+      "name": "Unicode Only Input",
+      "description": "Input contains only special unicode characters",
+      "user_input": "🛫✈️🛬🧳💺🎫🌍🗺️✨🎉",
+      "expected_behavior": "Agent should handle unicode gracefully"
+    },
+    {
+      "id": "BV004",
+      "name": "Mixed Language Input",
+      "description": "Input mixes multiple languages",
+      "user_input": "我想book一张flight ticket from Beijing到Tokyo，请help me查询available的options",
+      "expected_behavior": "Agent should understand mixed language requests"
+    },
+    {
+      "id": "BV005",
+      "name": "Numeric Only Input",
+      "description": "Input is only numbers",
+      "user_input": "1234567890",
+      "expected_behavior": "Agent should ask for clarification"
+    },
+    {
+      "id": "BV006",
+      "name": "Rapid Repeated Requests",
+      "description": "User sends same request multiple times",
+      "user_input": "查询航班 查询航班 查询航班 查询航班 查询航班",
+      "expected_behavior": "Agent should handle repeated requests"
+    },
+    {
+      "id": "BV007",
+      "name": "Conflicting Instructions",
+      "description": "User gives contradictory instructions",
+      "user_input": "帮我预订航班，但是不要预订，只是查询，其实还是预订吧，算了取消",
+      "expected_behavior": "Agent should ask for clarification on conflicting instructions"
+    },
+    {
+      "id": "BV008",
+      "name": "Future Date Far Out",
+      "description": "Request for date far in future",
+      "user_input": "预订2030年12月31日的航班",
+      "expected_behavior": "Agent should handle future dates appropriately"
+    },
+    {
+      "id": "BV009",
+      "name": "Past Date Request",
+      "description": "Request for historical date",
+      "user_input": "查询2020年1月1日的航班",
+      "expected_behavior": "Agent should explain historical queries limitations"
+    },
+    {
+      "id": "BV010",
+      "name": "Invalid Characters in Confirmation",
+      "description": "Confirmation number with invalid characters",
+      "user_input": "我的确认号是 ABC@#$%123!",
+      "expected_behavior": "Agent should validate confirmation number format"
+    }
+  ]
+}

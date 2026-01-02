@@ -1,0 +1,35 @@
+{
+  "service": "calendar",
+  "description": "Calendar and scheduling service",
+  "actions": {
+    "create_event": {
+      "description": "Create a calendar event for flight",
+      "required_params": ["title", "start_time", "end_time"],
+      "optional_params": ["location", "description", "reminders"],
+      "success_response": {
+        "event_id": "EVT-{random}",
+        "status": "created",
+        "calendar_link": "https://calendar.example.com/event/{random}",
+        "timestamp": "{now}"
+      }
+    },
+    "send_reminder": {
+      "description": "Send reminder for upcoming flight",
+      "required_params": ["flight_number", "customer_id", "reminder_time"],
+      "success_response": {
+        "reminder_id": "REM-{random}",
+        "scheduled_for": "{reminder_time}",
+        "status": "scheduled"
+      }
+    },
+    "check_conflicts": {
+      "description": "Check for scheduling conflicts",
+      "required_params": ["start_time", "end_time"],
+      "success_response": {
+        "has_conflicts": false,
+        "conflicts": [],
+        "checked_at": "{now}"
+      }
+    }
+  }
+}

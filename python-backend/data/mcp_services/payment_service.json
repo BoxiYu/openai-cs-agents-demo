@@ -1,0 +1,45 @@
+{
+  "service": "payment",
+  "description": "Payment processing service",
+  "actions": {
+    "charge": {
+      "description": "Charge customer payment method",
+      "required_params": ["amount", "token", "description"],
+      "success_response": {
+        "status": "success",
+        "transaction_id": "TXN-{random}",
+        "amount": "{amount}",
+        "currency": "CNY",
+        "timestamp": "{now}"
+      },
+      "failure_scenarios": [
+        {"code": "insufficient_funds", "message": "余额不足，请更换支付方式"},
+        {"code": "card_declined", "message": "银行卡被拒绝，请联系发卡行"},
+        {"code": "expired_card", "message": "银行卡已过期"},
+        {"code": "invalid_card", "message": "无效的卡号"},
+        {"code": "processing_error", "message": "处理失败，请稍后重试"}
+      ]
+    },
+    "refund": {
+      "description": "Process refund to customer",
+      "required_params": ["amount", "original_transaction_id", "reason"],
+      "success_response": {
+        "status": "processing",
+        "refund_id": "REF-{random}",
+        "amount": "{amount}",
+        "currency": "CNY",
+        "estimated_days": 5,
+        "timestamp": "{now}"
+      }
+    },
+    "check_balance": {
+      "description": "Check if payment method has sufficient balance",
+      "required_params": ["token", "amount"],
+      "success_response": {
+        "sufficient": true,
+        "available_balance": "hidden",
+        "checked_at": "{now}"
+      }
+    }
+  }
+}

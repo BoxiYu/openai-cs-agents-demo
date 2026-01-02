@@ -1,0 +1,63 @@
+{
+  "customers": [
+    {
+      "id": "C001",
+      "name": "张三",
+      "email": "zhangsan@example.com",
+      "phone": "138****1234",
+      "tier": "gold",
+      "frequent_flyer_id": "FF123456",
+      "bookings": ["BK001", "BK002"],
+      "payment_methods": [
+        {"type": "credit_card", "last_four": "1234", "token": "tok_abc123"}
+      ],
+      "preferences": {
+        "seat": "window",
+        "meal": "vegetarian"
+      }
+    },
+    {
+      "id": "C002",
+      "name": "李四",
+      "email": "lisi@example.com",
+      "phone": "139****5678",
+      "tier": "silver",
+      "frequent_flyer_id": "FF789012",
+      "bookings": ["BK003"],
+      "payment_methods": [],
+      "preferences": {}
+    },
+    {
+      "id": "C003",
+      "name": "Morgan Lee",
+      "email": "morgan.lee@example.com",
+      "phone": "1-555-0123",
+      "tier": "platinum",
+      "frequent_flyer_id": "FF204888",
+      "bookings": ["BK004"],
+      "payment_methods": [
+        {"type": "credit_card", "last_four": "9876", "token": "tok_xyz789"}
+      ],
+      "preferences": {
+        "seat": "aisle",
+        "meal": "standard"
+      }
+    },
+    {
+      "id": "C004",
+      "name": "Taylor Lee",
+      "email": "taylor.lee@example.com",
+      "phone": "1-555-0456",
+      "tier": "gold",
+      "frequent_flyer_id": "FF556789",
+      "bookings": ["BK005"],
+      "payment_methods": [
+        {"type": "credit_card", "last_four": "4321", "token": "tok_def456"}
+      ],
+      "preferences": {
+        "seat": "window",
+        "meal": "kosher"
+      }
+    }
+  ]
+}

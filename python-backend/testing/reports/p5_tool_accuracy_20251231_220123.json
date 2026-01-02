@@ -1,0 +1,434 @@
+{
+  "timestamp": "2025-12-31T22:01:23.426999",
+  "test_type": "tool_accuracy_evaluation",
+  "phase": "P5-3",
+  "summary": {
+    "total_scenarios": 12,
+    "passed": 4,
+    "failed": 8,
+    "pass_rate": "33.3%",
+    "average_match_rate": 0.582
+  },
+  "category_breakdown": {
+    "single_tool": {
+      "total": 3,
+      "passed": 2,
+      "avg_rate": 0.75
+    },
+    "multi_tool": {
+      "total": 2,
+      "passed": 0,
+      "avg_rate": 0.584
+    },
+    "sequence": {
+      "total": 2,
+      "passed": 0,
+      "avg_rate": 0.416
+    },
+    "no_tool": {
+      "total": 2,
+      "passed": 2,
+      "avg_rate": 1.0
+    },
+    "edge_case": {
+      "total": 2,
+      "passed": 0,
+      "avg_rate": 0.167
+    },
+    "complex": {
+      "total": 1,
+      "passed": 0,
+      "avg_rate": 0.4
+    }
+  },
+  "tool_statistics": {
+    "get_flight_status": {
+      "expected": 5,
+      "used": 5
+    },
+    "get_seat_info": {
+      "expected": 2,
+      "used": 2
+    },
+    "faq_lookup": {
+      "expected": 2,
+      "used": 1
+    },
+    "check_connection_risk": {
+      "expected": 1,
+      "used": 1
+    },
+    "search_alternative_flights": {
+      "expected": 3,
+      "used": 3
+    },
+    "change_seat": {
+      "expected": 1,
+      "used": 0
+    }
+  },
+  "failed_scenarios": [
+    {
+      "test_name": "航班状态查询",
+      "query": "航班PA441的状态如何？",
+      "expected": [
+        "get_flight_status"
+      ],
+      "actual": [
+        "get_flight_status",
+        "check_connection_risk",
+        "search_alternative_flights",
+        "get_seat_info"
+      ],
+      "match_rate": 0.25,
+      "missing": [],
+      "unexpected": [
+        "check_connection_risk",
+        "get_seat_info",
+        "search_alternative_flights"
+      ]
+    },
+    {
+      "test_name": "转机风险检查",
+      "query": "航班PA441延误了，会影响我的转机航班吗？",
+      "expected": [
+        "get_flight_status",
+        "check_connection_risk"
+      ],
+      "actual": [
+        "get_flight_status",
+        "check_connection_risk",
+        "search_alternative_flights",
+        "get_seat_info"
+      ],
+      "match_rate": 0.5,
+      "missing": [],
+      "unexpected": [
+        "get_seat_info",
+        "search_alternative_flights"
+      ]
+    },
+    {
+      "test_name": "延误处理完整流程",
+      "query": "我的航班延误了5小时，请帮我看看有什么替代航班，以及我可以获得什么补偿",
+      "expected": [
+        "get_flight_status",
+        "search_alternative_flights"
+      ],
+      "actual": [
+        "get_flight_status",
+        "search_alternative_flights",
+        "faq_lookup"
+      ],
+      "match_rate": 0.667,
+      "missing": [],
+      "unexpected": [
+        "faq_lookup"
+      ]
+    },
+    {
+      "test_name": "改签流程",
+      "query": "帮我改签到明天的航班",
+      "expected": [
+        "search_alternative_flights"
+      ],
+      "actual": [
+        "get_flight_status",
+        "search_alternative_flights",
+        "get_seat_info"
+      ],
+      "match_rate": 0.333,
+      "missing": [],
+      "unexpected": [
+        "get_flight_status",
+        "get_seat_info"
+      ]
+    },
+    {
+      "test_name": "换座位请求",
+      "query": "帮我换到靠窗的座位",
+      "expected": [
+        "get_seat_info",
+        "change_seat"
+      ],
+      "actual": [
+        "get_seat_info"
+      ],
+      "match_rate": 0.5,
+      "missing": [
+        "change_seat"
+      ],
+      "unexpected": []
+    },
+    {
+      "test_name": "不存在的航班",
+      "query": "航班ZZ9999的状态",
+      "expected": [
+        "get_flight_status"
+      ],
+      "actual": [
+        "get_flight_status",
+        "check_connection_risk",
+        "faq_lookup"
+      ],
+      "match_rate": 0.333,
+      "missing": [],
+      "unexpected": [
+        "check_connection_risk",
+        "faq_lookup"
+      ]
+    },
+    {
+      "test_name": "模糊请求",
+      "query": "帮帮我",
+      "expected": [],
+      "actual": [
+        "get_flight_status",
+        "search_alternative_flights",
+        "get_seat_info",
+        "faq_lookup"
+      ],
+      "match_rate": 0.0,
+      "missing": [],
+      "unexpected": [
+        "faq_lookup",
+        "get_flight_status",
+        "get_seat_info",
+        "search_alternative_flights"
+      ]
+    },
+    {
+      "test_name": "完整延误补偿流程",
+      "query": "航班PA441延误了，请帮我看看状态、有什么替代航班、可以获得什么补偿",
+      "expected": [
+        "get_flight_status",
+        "search_alternative_flights",
+        "faq_lookup"
+      ],
+      "actual": [
+        "get_flight_status",
+        "check_connection_risk",
+        "search_alternative_flights",
+        "get_seat_info"
+      ],
+      "match_rate": 0.4,
+      "missing": [
+        "faq_lookup"
+      ],
+      "unexpected": [
+        "check_connection_risk",
+        "get_seat_info"
+      ]
+    }
+  ],
+  "detailed_results": [
+    {
+      "test_name": "航班状态查询",
+      "query": "航班PA441的状态如何？",
+      "expected_tools": [
+        "get_flight_status"
+      ],
+      "actual_tools": [
+        "get_flight_status",
+        "check_connection_risk",
+        "search_alternative_flights",
+        "get_seat_info"
+      ],
+      "tool_match_rate": 0.25,
+      "missing_tools": [],
+      "unexpected_tools": [
+        "check_connection_risk",
+        "get_seat_info",
+        "search_alternative_flights"
+      ],
+      "passed": false
+    },
+    {
+      "test_name": "座位信息查询",
+      "query": "我的座位是什么？",
+      "expected_tools": [
+        "get_seat_info"
+      ],
+      "actual_tools": [
+        "get_seat_info"
+      ],
+      "tool_match_rate": 1.0,
+      "missing_tools": [],
+      "unexpected_tools": [],
+      "passed": true
+    },
+    {
+      "test_name": "行李政策查询",
+      "query": "托运行李限制是多少？",
+      "expected_tools": [
+        "faq_lookup"
+      ],
+      "actual_tools": [
+        "faq_lookup"
+      ],
+      "tool_match_rate": 1.0,
+      "missing_tools": [],
+      "unexpected_tools": [],
+      "passed": true
+    },
+    {
+      "test_name": "转机风险检查",
+      "query": "航班PA441延误了，会影响我的转机航班吗？",
+      "expected_tools": [
+        "get_flight_status",
+        "check_connection_risk"
+      ],
+      "actual_tools": [
+        "get_flight_status",
+        "check_connection_risk",
+        "search_alternative_flights",
+        "get_seat_info"
+      ],
+      "tool_match_rate": 0.5,
+      "missing_tools": [],
+      "unexpected_tools": [
+        "get_seat_info",
+        "search_alternative_flights"
+      ],
+      "passed": false
+    },
+    {
+      "test_name": "延误处理完整流程",
+      "query": "我的航班延误了5小时，请帮我看看有什么替代航班，以及我可以获得什么补偿",
+      "expected_tools": [
+        "get_flight_status",
+        "search_alternative_flights"
+      ],
+      "actual_tools": [
+        "get_flight_status",
+        "search_alternative_flights",
+        "faq_lookup"
+      ],
+      "tool_match_rate": 0.667,
+      "missing_tools": [],
+      "unexpected_tools": [
+        "faq_lookup"
+      ],
+      "passed": false
+    },
+    {
+      "test_name": "改签流程",
+      "query": "帮我改签到明天的航班",
+      "expected_tools": [
+        "search_alternative_flights"
+      ],
+      "actual_tools": [
+        "get_flight_status",
+        "search_alternative_flights",
+        "get_seat_info"
+      ],
+      "tool_match_rate": 0.333,
+      "missing_tools": [],
+      "unexpected_tools": [
+        "get_flight_status",
+        "get_seat_info"
+      ],
+      "passed": false
+    },
+    {
+      "test_name": "换座位请求",
+      "query": "帮我换到靠窗的座位",
+      "expected_tools": [
+        "get_seat_info",
+        "change_seat"
+      ],
+      "actual_tools": [
+        "get_seat_info"
+      ],
+      "tool_match_rate": 0.5,
+      "missing_tools": [
+        "change_seat"
+      ],
+      "unexpected_tools": [],
+      "passed": false
+    },
+    {
+      "test_name": "简单问候",
+      "query": "你好",
+      "expected_tools": [],
+      "actual_tools": [],
+      "tool_match_rate": 1.0,
+      "missing_tools": [],
+      "unexpected_tools": [],
+      "passed": true
+    },
+    {
+      "test_name": "超范围请求",
+      "query": "今天北京天气怎么样？",
+      "expected_tools": [],
+      "actual_tools": [],
+      "tool_match_rate": 1.0,
+      "missing_tools": [],
+      "unexpected_tools": [],
+      "passed": true
+    },
+    {
+      "test_name": "不存在的航班",
+      "query": "航班ZZ9999的状态",
+      "expected_tools": [
+        "get_flight_status"
+      ],
+      "actual_tools": [
+        "get_flight_status",
+        "check_connection_risk",
+        "faq_lookup"
+      ],
+      "tool_match_rate": 0.333,
+      "missing_tools": [],
+      "unexpected_tools": [
+        "check_connection_risk",
+        "faq_lookup"
+      ],
+      "passed": false
+    },
+    {
+      "test_name": "模糊请求",
+      "query": "帮帮我",
+      "expected_tools": [],
+      "actual_tools": [
+        "get_flight_status",
+        "search_alternative_flights",
+        "get_seat_info",
+        "faq_lookup"
+      ],
+      "tool_match_rate": 0.0,
+      "missing_tools": [],
+      "unexpected_tools": [
+        "faq_lookup",
+        "get_flight_status",
+        "get_seat_info",
+        "search_alternative_flights"
+      ],
+      "passed": false
+    },
+    {
+      "test_name": "完整延误补偿流程",
+      "query": "航班PA441延误了，请帮我看看状态、有什么替代航班、可以获得什么补偿",
+      "expected_tools": [
+        "get_flight_status",
+        "search_alternative_flights",
+        "faq_lookup"
+      ],
+      "actual_tools": [
+        "get_flight_status",
+        "check_connection_risk",
+        "search_alternative_flights",
+        "get_seat_info"
+      ],
+      "tool_match_rate": 0.4,
+      "missing_tools": [
+        "faq_lookup"
+      ],
+      "unexpected_tools": [
+        "check_connection_risk",
+        "get_seat_info"
+      ],
+      "passed": false
+    }
+  ]
+}

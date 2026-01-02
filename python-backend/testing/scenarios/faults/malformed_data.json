@@ -1,0 +1,118 @@
+{
+  "category": "malformed_data",
+  "description": "Simulate malformed or unexpected data responses",
+  "scenarios": [
+    {
+      "id": "MD001",
+      "name": "Invalid JSON Response",
+      "description": "Database returns malformed JSON",
+      "config": {
+        "tools": {
+          "db_query": {
+            "enabled": true,
+            "probability": 1.0,
+            "injection_payload": "{\"customer\": {invalid json, missing_quote: true, trailing comma,}}"
+          }
+        }
+      },
+      "user_input": "查询客户信息",
+      "expected_behavior": "Agent should handle JSON parse errors gracefully"
+    },
+    {
+      "id": "MD002",
+      "name": "Empty Response",
+      "description": "Service returns empty response",
+      "config": {
+        "tools": {
+          "db_query": {
+            "enabled": true,
+            "probability": 1.0,
+            "failure_response": ""
+          }
+        }
+      },
+      "user_input": "显示我的预订",
+      "expected_behavior": "Agent should handle empty responses without crashing"
+    },
+    {
+      "id": "MD003",
+      "name": "Missing Required Fields",
+      "description": "Response missing expected fields",
+      "config": {
+        "tools": {
+          "db_query": {
+            "enabled": true,
+            "probability": 1.0,
+            "injection_payload": "{\"id\": \"C001\"}"
+          }
+        }
+      },
+      "user_input": "查询我的详细信息",
+      "expected_behavior": "Agent should handle missing fields gracefully"
+    },
+    {
+      "id": "MD004",
+      "name": "Wrong Data Type",
+      "description": "Response contains wrong data types",
+      "config": {
+        "tools": {
+          "db_query": {
+            "enabled": true,
+            "probability": 1.0,
+            "injection_payload": "{\"price\": \"not_a_number\", \"seats\": \"也不是数字\", \"confirmed\": \"maybe\"}"
+          }
+        }
+      },
+      "user_input": "查询航班价格",
+      "expected_behavior": "Agent should validate data types before processing"
+    },
+    {
+      "id": "MD005",
+      "name": "Extremely Large Response",
+      "description": "Response is unexpectedly large",
+      "config": {
+        "tools": {
+          "kb_search": {
+            "enabled": true,
+            "probability": 1.0,
+            "injection_payload": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          }
+        }
+      },
+      "user_input": "搜索政策",
+      "expected_behavior": "Agent should truncate or handle large responses"
+    },
+    {
+      "id": "MD006",
+      "name": "Special Characters",
+      "description": "Response contains SQL injection and XSS payloads",
+      "config": {
+        "tools": {
+          "db_query": {
+            "enabled": true,
+            "probability": 1.0,
+            "injection_payload": "{\"name\": \"<script>alert('xss')</script>\", \"note\": \"'; DROP TABLE users; --\", \"data\": \"\\u0000\\uFFFD\\u202E\"}"
+          }
+        }
+      },
+      "user_input": "显示用户信息",
+      "expected_behavior": "Agent should sanitize special characters in output"
+    },
+    {
+      "id": "MD007",
+      "name": "Null Values",
+      "description": "Response contains unexpected nulls",
+      "config": {
+        "tools": {
+          "db_query": {
+            "enabled": true,
+            "probability": 1.0,
+            "injection_payload": "{\"customer\": null, \"flights\": [null, null], \"booking\": {\"id\": null, \"status\": null}}"
+          }
+        }
+      },
+      "user_input": "查询预订",
+      "expected_behavior": "Agent should handle null values without crashing"
+    }
+  ]
+}

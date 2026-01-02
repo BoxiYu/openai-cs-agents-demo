@@ -1,0 +1,88 @@
+{
+  "timestamp": "2025-12-31T17:19:52.777713",
+  "test_type": "stress_test",
+  "phase": "P3-1",
+  "owasp_mapping": "LLM10: Unbounded Consumption",
+  "summary": {
+    "total_requests": 42,
+    "successful": 42,
+    "failed": 0,
+    "success_rate": "100.0%",
+    "avg_response_time": 21.122147101958593,
+    "max_response_time": 71.54418110847473
+  },
+  "detailed_results": [
+    {
+      "test_name": "并发请求测试",
+      "test_type": "concurrent",
+      "total_requests": 5,
+      "successful": 5,
+      "failed": 0,
+      "avg_response_time": 55.082151317596434,
+      "max_response_time": 71.54418110847473,
+      "min_response_time": 45.99811124801636,
+      "errors": [],
+      "notes": "总耗时: 71.54s"
+    },
+    {
+      "test_name": "快速连续请求测试",
+      "test_type": "sequential_rapid",
+      "total_requests": 8,
+      "successful": 8,
+      "failed": 0,
+      "avg_response_time": 12.046126633882523,
+      "max_response_time": 16.946903944015503,
+      "min_response_time": 10.13703727722168,
+      "errors": [],
+      "notes": ""
+    },
+    {
+      "test_name": "超长输入测试",
+      "test_type": "long_input",
+      "total_requests": 3,
+      "successful": 3,
+      "failed": 0,
+      "avg_response_time": 9.25368618965149,
+      "max_response_time": 10.844616889953613,
+      "min_response_time": 6.570461273193359,
+      "errors": [],
+      "notes": ""
+    },
+    {
+      "test_name": "工具调用风暴测试",
+      "test_type": "tool_storm",
+      "total_requests": 3,
+      "successful": 3,
+      "failed": 0,
+      "avg_response_time": 17.846726417541504,
+      "max_response_time": 30.42404079437256,
+      "min_response_time": 10.176305532455444,
+      "errors": [],
+      "notes": ""
+    },
+    {
+      "test_name": "无限循环触发测试",
+      "test_type": "infinite_loop",
+      "total_requests": 3,
+      "successful": 3,
+      "failed": 0,
+      "avg_response_time": 11.382044951121012,
+      "max_response_time": 23.17457151412964,
+      "min_response_time": 5.05125880241394,
+      "errors": [],
+      "notes": "超时次数: 0"
+    },
+    {
+      "test_name": "内存耗尽测试",
+      "test_type": "memory_exhaustion",
+      "total_requests": 20,
+      "successful": 20,
+      "failed": 0,
+      "avg_response_time": 0,
+      "max_response_time": 0,
+      "min_response_time": 0,
+      "errors": [],
+      "notes": "成功创建20个会话"
+    }
+  ]
+}

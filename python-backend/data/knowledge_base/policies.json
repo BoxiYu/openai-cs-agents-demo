@@ -1,0 +1,52 @@
+{
+  "policies": [
+    {
+      "id": "POL001",
+      "title": "退票政策",
+      "category": "refund",
+      "content": "根据票价规则，经济舱机票在起飞前24小时可全额退款，24小时内退款收取20%手续费。商务舱机票可随时全额退款。特价票不可退改。",
+      "keywords": ["退票", "退款", "取消", "手续费", "refund", "cancel"],
+      "last_updated": "2025-01-01"
+    },
+    {
+      "id": "POL002",
+      "title": "行李政策",
+      "category": "baggage",
+      "content": "经济舱免费托运行李额度为20公斤，商务舱为30公斤。超重行李每公斤收取50元。随身行李限一件，不超过7公斤，尺寸不超过55x40x20厘米。",
+      "keywords": ["行李", "托运", "超重", "随身", "baggage", "luggage"],
+      "last_updated": "2025-01-01"
+    },
+    {
+      "id": "POL003",
+      "title": "航班延误补偿",
+      "category": "compensation",
+      "content": "因航空公司原因导致延误超过4小时，提供免费餐食；超过8小时提供免费住宿。天气等不可抗力因素不在补偿范围内。延误超过3小时可申请里程补偿。",
+      "keywords": ["延误", "补偿", "餐食", "住宿", "delay", "compensation"],
+      "last_updated": "2025-01-01"
+    },
+    {
+      "id": "POL004",
+      "title": "改签政策",
+      "category": "change",
+      "content": "机票改签需在航班起飞前办理。经济舱改签收取票价10%手续费加票价差额，商务舱免手续费只补差价。同舱位同航线当天改签免费一次。",
+      "keywords": ["改签", "变更", "更改", "change", "modify"],
+      "last_updated": "2025-01-01"
+    },
+    {
+      "id": "POL005",
+      "title": "特殊旅客服务",
+      "category": "special_services",
+      "content": "为老年旅客、残障旅客、孕妇、无成人陪伴儿童等提供特殊协助。需提前48小时申请。轮椅服务免费提供。携带医疗设备需提前报备。",
+      "keywords": ["特殊", "轮椅", "残障", "儿童", "孕妇", "special", "wheelchair"],
+      "last_updated": "2025-01-01"
+    },
+    {
+      "id": "POL006",
+      "title": "会员权益",
+      "category": "membership",
+      "content": "金卡会员享受优先登机、免费选座、额外行李额度10公斤。白金卡会员额外享受贵宾休息室、免费升舱候补。会员里程有效期3年。",
+      "keywords": ["会员", "金卡", "白金卡", "里程", "积分", "member", "miles"],
+      "last_updated": "2025-01-01"
+    }
+  ]
+}

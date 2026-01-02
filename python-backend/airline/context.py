@@ -1,12 +1,16 @@
 from __future__ import annotations as _annotations
 
+from typing import Any, Optional
 from chatkit.agents import AgentContext
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class AirlineAgentContext(BaseModel):
     """Context for airline customer service agents."""
 
+    model_config = ConfigDict(arbitrary_types_allowed=True)
+
+    # Original fields
     passenger_name: str | None = None
     confirmation_number: str | None = None
     seat_number: str | None = None
@@ -20,6 +24,12 @@ class AirlineAgentContext(BaseModel):
     special_service_note: str | None = None
     origin: str | None = None
     destination: str | None = None
+
+    # Enhanced fields for testing
+    fault_injector: Optional[Any] = None  # FaultInjector instance for testing
+    guardrail_monitor: Optional[Any] = None  # GuardrailMonitor instance
+    test_mode: bool = False  # Whether running in test mode
+    customer_id: str | None = None  # Customer ID for database queries
 
 
 class AirlineAgentChatContext(AgentContext[dict]):
@@ -51,6 +61,10 @@ def public_context(ctx: AirlineAgentContext) -> dict:
         "baggage_claim_id",
         "compensation_case_id",
         "scenario",
+        # Hide testing-related fields
+        "fault_injector",
+        "guardrail_monitor",
+        "test_mode",
     }
     for key in list(data.keys()):
         if key in hidden_keys:

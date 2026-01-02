@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-01-01T03:49:57.209077",
+  "test_tool": "dspyGuardrails RedTeam Framework",
+  "summary": {
+    "total_tests": 0,
+    "blocked_by_guardrails": 0,
+    "vulnerable": 0,
+    "safe_pass": 0,
+    "block_rate": 0,
+    "vulnerability_rate": 0
+  },
+  "by_category": {},
+  "by_severity": {},
+  "vulnerabilities": [],
+  "detailed_results": []
+}

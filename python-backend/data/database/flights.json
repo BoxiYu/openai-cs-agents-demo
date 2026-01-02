@@ -1,0 +1,129 @@
+{
+  "flights": [
+    {
+      "flight_number": "CA1234",
+      "origin": "PEK",
+      "origin_city": "北京",
+      "destination": "SHA",
+      "destination_city": "上海",
+      "departure_time": "2025-01-15T08:00:00",
+      "arrival_time": "2025-01-15T10:30:00",
+      "status": "scheduled",
+      "gate": "A12",
+      "aircraft": "Boeing 737-800",
+      "seats_available": {
+        "business": 8,
+        "economy": 45
+      },
+      "price": {
+        "business": 2500,
+        "economy": 800
+      }
+    },
+    {
+      "flight_number": "MU5678",
+      "origin": "SHA",
+      "origin_city": "上海",
+      "destination": "CAN",
+      "destination_city": "广州",
+      "departure_time": "2025-01-15T14:00:00",
+      "arrival_time": "2025-01-15T16:30:00",
+      "status": "delayed",
+      "delay_reason": "天气原因",
+      "delay_minutes": 60,
+      "gate": "B5",
+      "aircraft": "Airbus A320",
+      "seats_available": {
+        "business": 0,
+        "economy": 12
+      },
+      "price": {
+        "business": 3000,
+        "economy": 950
+      }
+    },
+    {
+      "flight_number": "PA441",
+      "origin": "CDG",
+      "origin_city": "Paris",
+      "destination": "JFK",
+      "destination_city": "New York",
+      "departure_time": "2025-01-09T14:10:00",
+      "arrival_time": "2025-01-09T17:40:00",
+      "status": "delayed",
+      "delay_reason": "Weather conditions",
+      "delay_minutes": 300,
+      "gate": "B18",
+      "aircraft": "Boeing 777-300ER",
+      "seats_available": {
+        "business": 5,
+        "economy": 20
+      },
+      "price": {
+        "business": 8500,
+        "economy": 2200
+      }
+    },
+    {
+      "flight_number": "NY802",
+      "origin": "JFK",
+      "origin_city": "New York",
+      "destination": "AUS",
+      "destination_city": "Austin",
+      "departure_time": "2025-01-09T19:10:00",
+      "arrival_time": "2025-01-09T22:35:00",
+      "status": "cancelled",
+      "cancel_reason": "Connection missed due to PA441 delay",
+      "gate": "C7",
+      "aircraft": "Airbus A321",
+      "seats_available": {
+        "business": 0,
+        "economy": 0
+      },
+      "price": {
+        "business": 1200,
+        "economy": 450
+      }
+    },
+    {
+      "flight_number": "NY950",
+      "origin": "JFK",
+      "origin_city": "New York",
+      "destination": "AUS",
+      "destination_city": "Austin",
+      "departure_time": "2025-01-10T09:45:00",
+      "arrival_time": "2025-01-10T12:30:00",
+      "status": "scheduled",
+      "gate": "C12",
+      "aircraft": "Boeing 737 MAX 8",
+      "seats_available": {
+        "business": 3,
+        "economy": 35
+      },
+      "price": {
+        "business": 1100,
+        "economy": 400
+      }
+    },
+    {
+      "flight_number": "FLT-123",
+      "origin": "SFO",
+      "origin_city": "San Francisco",
+      "destination": "LAX",
+      "destination_city": "Los Angeles",
+      "departure_time": "2025-01-09T16:10:00",
+      "arrival_time": "2025-01-09T17:35:00",
+      "status": "on_time",
+      "gate": "A10",
+      "aircraft": "Airbus A320neo",
+      "seats_available": {
+        "business": 4,
+        "economy": 60
+      },
+      "price": {
+        "business": 450,
+        "economy": 150
+      }
+    }
+  ]
+}

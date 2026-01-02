@@ -4,6 +4,27 @@ import json
 import os
 from typing import Any, Dict
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# 配置 OpenAI Agents SDK 使用自定义 client
+from openai import AsyncOpenAI
+from agents import (
+    set_default_openai_api,
+    set_default_openai_client,
+    set_tracing_disabled
+)
+
+client = AsyncOpenAI(
+    base_url=os.environ.get('OPENAI_BASE_URL', 'https://api.openai.com/v1'),
+    api_key=os.environ.get('OPENAI_API_KEY'),
+)
+set_default_openai_client(client=client, use_for_tracing=False)
+# Kimi API 只支持 chat_completions，不支持 responses API
+set_default_openai_api("chat_completions")
+set_tracing_disabled(disabled=True)
+
 from chatkit.server import StreamingResult
 from fastapi import Depends, FastAPI, Query, Request
 from fastapi.middleware.cors import CORSMiddleware

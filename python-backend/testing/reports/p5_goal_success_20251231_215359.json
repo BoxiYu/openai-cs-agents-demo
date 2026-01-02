@@ -1,0 +1,381 @@
+{
+  "timestamp": "2025-12-31T21:53:59.184349",
+  "test_type": "goal_success_evaluation",
+  "phase": "P5-2",
+  "summary": {
+    "total_goals": 10,
+    "achieved": 4,
+    "not_achieved": 6,
+    "success_rate": "40.0%",
+    "average_completion": 0.55
+  },
+  "category_breakdown": {
+    "info_retrieval": {
+      "total": 2,
+      "achieved": 2,
+      "avg_rate": 1.0
+    },
+    "action": {
+      "total": 2,
+      "achieved": 0,
+      "avg_rate": 0.25
+    },
+    "multi_step": {
+      "total": 2,
+      "achieved": 0,
+      "avg_rate": 0.5
+    },
+    "faq": {
+      "total": 2,
+      "achieved": 1,
+      "avg_rate": 0.5
+    },
+    "edge_case": {
+      "total": 2,
+      "achieved": 1,
+      "avg_rate": 0.5
+    }
+  },
+  "failed_goals": [
+    {
+      "goal_name": "查看替代航班",
+      "description": "用户想查看可选的替代航班",
+      "completion_rate": 0.0,
+      "criteria_status": [
+        [
+          "提供至少一个替代航班选项",
+          false
+        ],
+        [
+          "包含航班号",
+          false
+        ],
+        [
+          "包含时间信息",
+          false
+        ]
+      ]
+    },
+    {
+      "goal_name": "查询座位信息",
+      "description": "用户想了解当前座位",
+      "completion_rate": 0.5,
+      "criteria_status": [
+        [
+          "提供座位号",
+          true
+        ],
+        [
+          "说明座位位置（靠窗/过道）",
+          false
+        ]
+      ]
+    },
+    {
+      "goal_name": "完整延误处理流程",
+      "description": "用户需要处理航班延误的完整流程",
+      "completion_rate": 0.5,
+      "criteria_status": [
+        [
+          "确认延误状态",
+          false
+        ],
+        [
+          "提供替代航班选项",
+          false
+        ],
+        [
+          "说明补偿政策",
+          true
+        ],
+        [
+          "提供下一步行动建议",
+          true
+        ]
+      ]
+    },
+    {
+      "goal_name": "了解行李政策",
+      "description": "用户想了解行李限制",
+      "completion_rate": 0.0,
+      "criteria_status": [
+        [
+          "提供托运行李限制",
+          false
+        ],
+        [
+          "提供手提行李限制",
+          false
+        ],
+        [
+          "说明超重费用（如适用）",
+          false
+        ]
+      ]
+    },
+    {
+      "goal_name": "处理不存在的航班",
+      "description": "用户查询不存在的航班",
+      "completion_rate": 0.0,
+      "criteria_status": [
+        [
+          "明确告知找不到该航班",
+          false
+        ],
+        [
+          "不编造虚假信息",
+          false
+        ]
+      ]
+    },
+    {
+      "goal_name": "完整改签流程",
+      "description": "用户需要改签到其他航班",
+      "completion_rate": 0.5,
+      "criteria_status": [
+        [
+          "理解改签意图",
+          true
+        ],
+        [
+          "提供可选航班列表",
+          false
+        ],
+        [
+          "说明改签流程或费用",
+          false
+        ],
+        [
+          "提供确认信息",
+          true
+        ]
+      ]
+    }
+  ],
+  "detailed_results": [
+    {
+      "goal_name": "获取航班延误信息",
+      "description": "用户想了解航班PA441的延误详情",
+      "queries": [
+        "航班PA441的状态如何？"
+      ],
+      "responses": [
+        "I'll help you check the status of flight PA441. Let me transfer you to the Flight Information Agent who can provide you with the current flight status and any relevant details. I'll check the current status of flight PA441 for you. Flight PA441 is currently delayed by 5 hours due to weather conditio"
+      ],
+      "success_criteria": [
+        "提供航班当前状态（延误/准点）",
+        "说明延误原因",
+        "提供预计起飞/到达时间"
+      ],
+      "criteria_met": [
+        true,
+        true,
+        true
+      ],
+      "goal_achieved": true,
+      "completion_rate": 1.0
+    },
+    {
+      "goal_name": "了解转机风险",
+      "description": "用户想知道延误是否影响转机",
+      "queries": [
+        "我的航班PA441延误了，会影响转机吗？"
+      ],
+      "responses": [
+        "我来帮您查看PA441航班的延误情况以及是否会影响您的转机。  I see you're asking about PA441 flight delays affecting your connection. Let me check the current status for you. I can see that your flight PA441 from Paris (CDG) to New York (JFK) is significantly delayed by 5 hours due to weather conditions. The new expected depart"
+      ],
+      "success_criteria": [
+        "确认是否会影响转机",
+        "提供转机航班信息",
+        "给出建议（改签或等待）"
+      ],
+      "criteria_met": [
+        true,
+        true,
+        true
+      ],
+      "goal_achieved": true,
+      "completion_rate": 1.0
+    },
+    {
+      "goal_name": "查看替代航班",
+      "description": "用户想查看可选的替代航班",
+      "queries": [
+        "有什么替代航班可以选择？"
+      ],
+      "responses": [
+        "我来帮您查看有哪些替代航班可以选择。让我先获取您的行程信息。  我看到您的航班FLT-123从旧金山(SFO)到洛杉矶(LAX)目前状态正常，准点运行。既然您询问替代航班，让我为您查看一下今天这条航线上的其他航班选择。 根据查询结果，今天从旧金山到洛杉矶的所有航班都在正常运行，目前没有必要选择替代航班。您的原始航班FLT-123也在按计划准点运行。\n\n如果您想要预订其他时间段的航班作为备选，或者有其他特殊需求，我可以帮您转接到预订和退改签专员来协助处理。"
+      ],
+      "success_criteria": [
+        "提供至少一个替代航班选项",
+        "包含航班号",
+        "包含时间信息"
+      ],
+      "criteria_met": [
+        false,
+        false,
+        false
+      ],
+      "goal_achieved": false,
+      "completion_rate": 0.0
+    },
+    {
+      "goal_name": "查询座位信息",
+      "description": "用户想了解当前座位",
+      "queries": [
+        "我现在的座位是什么？"
+      ],
+      "responses": [
+        "我来帮您查询您当前的座位信息。  根据您的预订信息，您当前在航班 FLT-123 上的座位是 **23A**。\n\n如果您需要更换座位或申请特殊服务（例如前排座位或医疗需求），请告诉我您的需求。我可以为您打开座位图供您选择，或直接为您安排特定的座位。"
+      ],
+      "success_criteria": [
+        "提供座位号",
+        "说明座位位置（靠窗/过道）"
+      ],
+      "criteria_met": [
+        true,
+        false
+      ],
+      "goal_achieved": false,
+      "completion_rate": 0.5
+    },
+    {
+      "goal_name": "完整延误处理流程",
+      "description": "用户需要处理航班延误的完整流程",
+      "queries": [
+        "航班PA441延误了，请帮我处理",
+        "有什么替代航班？",
+        "我可以获得什么补偿？"
+      ],
+      "responses": [
+        "我来帮您处理航班PA441的延误问题。让我先获取您的行程信息，然后为您转接到专门处理航班延误补偿的客服。  我注意到您提到的航班号是PA441，但系统显示的是FLT-123。让我帮您处理延误补偿事宜。根据记录，您的确认号是LL0EZ6，航班从旧金山(SFO)飞往洛杉矶(LAX)。\n\n让我先查询一下关于航班延误补偿的政策：  我注意到您提到的航班号是PA441，但系统显示的是FLT-123。让我帮您查询关于航班延误补偿的相关政策信息。  根据我们的政策，对于航班延误我们有以下补偿措施：\n\n**长时间延误的补偿政策：**\n- **基础保障**：我们提供必要的关怀服务，包括酒店住宿、餐食券以及必要的",
+        "   很抱歉，我无法在FAQ中找到关于替代航班或重新预订政策的具体信息。\n\n关于替代航班的查询，这通常需要专门的航班预订系统来查看实时的航班座位可用性和重新预订选项。我可以帮您转接到专门处理航班预订的客服代理，他们可以：\n\n1. 查看您原定航班PA441的航线信息\n2. 为您寻找可用的替代航班选项\n3. 协助您重新预订到合适的航班\n\n您希望我现在为您转接到航班预订代理吗？",
+        "根据我刚才查询到的航班延误补偿政策，您可以获得的补偿包括：\n\n**补偿类型：**\n1. **基础关怀服务**（适用于所有长时间延误）：\n   - 酒店住宿安排\n   - 餐食券\n   - 必要的地面交通服务\n\n2. **额外补偿**（适用于3小时以上延误或导致错过转机的情况）：\n   - 里程积分补偿\n   - 旅行积分补偿\n\n**您的案例：**\n由于您提到航班PA441延误了，只要符合以下条件之一，您就有资格获得补偿：\n- 航班延误超过3小时\n- 延误导致您错过了转机航班\n\n**下一步处理：**\n我可以帮您转接到专门的**退款与补偿代理**，他们可以：\n- 为您提交正式的补偿案例\n- 确定您"
+      ],
+      "success_criteria": [
+        "确认延误状态",
+        "提供替代航班选项",
+        "说明补偿政策",
+        "提供下一步行动建议"
+      ],
+      "criteria_met": [
+        false,
+        false,
+        true,
+        true
+      ],
+      "goal_achieved": false,
+      "completion_rate": 0.5
+    },
+    {
+      "goal_name": "了解行李政策",
+      "description": "用户想了解行李限制",
+      "queries": [
+        "行李限制是多少？托运和手提各是多少？"
+      ],
+      "responses": [
+        "我来为您查询行李政策的相关信息。  很抱歉，我无法在常见问题中找到关于行李限制的答案。如果您需要了解具体的托运行李和手提行李政策，我可以帮您转接到专门处理行李相关问题的客服代表，他们可以为您提供准确的行李限额信息。您希望我现在为您转接吗？"
+      ],
+      "success_criteria": [
+        "提供托运行李限制",
+        "提供手提行李限制",
+        "说明超重费用（如适用）"
+      ],
+      "criteria_met": [
+        false,
+        false,
+        false
+      ],
+      "goal_achieved": false,
+      "completion_rate": 0.0
+    },
+    {
+      "goal_name": "了解WiFi服务",
+      "description": "用户想了解航班WiFi",
+      "queries": [
+        "航班上有WiFi吗？怎么使用？"
+      ],
+      "responses": [
+        "我来为您查询航班WiFi的相关信息。  根据查询结果，我们航班上提供免费WiFi服务。您只需要连接\"Airline-Wifi\"网络即可使用。\n\n如果您需要了解更详细的连接步骤或其他相关问题，请随时告诉我。"
+      ],
+      "success_criteria": [
+        "确认WiFi是否可用",
+        "说明使用方法或收费"
+      ],
+      "criteria_met": [
+        true,
+        true
+      ],
+      "goal_achieved": true,
+      "completion_rate": 1.0
+    },
+    {
+      "goal_name": "处理不存在的航班",
+      "description": "用户查询不存在的航班",
+      "queries": [
+        "航班ZZ9999的状态如何？"
+      ],
+      "responses": [
+        "我将帮您查询航班ZZ9999的状态信息。  航班ZZ9999目前状态正常，准时起飞，登机口为A10。"
+      ],
+      "success_criteria": [
+        "明确告知找不到该航班",
+        "不编造虚假信息"
+      ],
+      "criteria_met": [
+        false,
+        false
+      ],
+      "goal_achieved": false,
+      "completion_rate": 0.0
+    },
+    {
+      "goal_name": "拒绝超范围请求",
+      "description": "用户请求超出服务范围",
+      "queries": [
+        "帮我订一家酒店"
+      ],
+      "responses": [
+        "I understand you'd like to book a hotel. However, I'm the airline customer service triage agent and can only help with flight-related requests such as flight status, booking changes, seating, or compensation for flight disruptions.\n\nFor hotel bookings, you'll need to contact a hotel booking service "
+      ],
+      "success_criteria": [
+        "礼貌拒绝",
+        "说明服务范围",
+        "不尝试执行无关操作"
+      ],
+      "criteria_met": [
+        true,
+        true,
+        true
+      ],
+      "goal_achieved": true,
+      "completion_rate": 1.0
+    },
+    {
+      "goal_name": "完整改签流程",
+      "description": "用户需要改签到其他航班",
+      "queries": [
+        "我想改签到明天的航班",
+        "有哪些航班可选？"
+      ],
+      "responses": [
+        "我来帮您处理改签请求。让我先了解一下您的具体行程信息。  I see you want to change your flight to tomorrow. I have your current booking details:\n\n**Current Flight:**\n- Flight: FLT-123\n- Confirmation: LL0EZ6\n- Route: San Francisco (SFO) → Los Angeles (LAX)\n- Status: On time and operating as scheduled\n\nLet me search for available",
+        "Based on my search, all flights on the San Francisco (SFO) to Los Angeles (LAX) route are operating on time, and no alternate flights were flagged as needing replacement options. This means the system shows FLT-123 as the primary available flight for this route.\n\nSince your original flight FLT-123 i"
+      ],
+      "success_criteria": [
+        "理解改签意图",
+        "提供可选航班列表",
+        "说明改签流程或费用",
+        "提供确认信息"
+      ],
+      "criteria_met": [
+        true,
+        false,
+        false,
+        true
+      ],
+      "goal_achieved": false,
+      "completion_rate": 0.5
+    }
+  ]
+}

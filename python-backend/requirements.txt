@@ -3,3 +3,7 @@ openai-chatkit
 pydantic
 fastapi
 uvicorn
+python-dotenv
+
+# Local dspy-guardrails (monorepo)
+-e ../../dspyGuardrails

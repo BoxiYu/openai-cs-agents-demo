@@ -1,0 +1,43 @@
+{
+  "service": "email",
+  "description": "Email notification service",
+  "actions": {
+    "send": {
+      "description": "Send an email to customer",
+      "required_params": ["to", "subject", "body"],
+      "success_response": {
+        "status": "sent",
+        "message_id": "MSG-{random}",
+        "timestamp": "{now}"
+      },
+      "templates": {
+        "booking_confirmation": {
+          "subject": "预订确认 - {flight_number}",
+          "body": "尊敬的{customer_name}，\n\n您的航班{flight_number}预订成功。\n确认号：{confirmation_number}\n航班日期：{flight_date}\n座位：{seat}\n\n请提前2小时到达机场办理值机。\n\n祝您旅途愉快！"
+        },
+        "cancellation": {
+          "subject": "航班取消确认 - {confirmation_number}",
+          "body": "尊敬的{customer_name}，\n\n您的航班{flight_number}（确认号：{confirmation_number}）已成功取消。\n退款金额：¥{refund_amount}\n退款将在3-5个工作日内原路退回。\n\n如有疑问请联系客服。"
+        },
+        "delay_notification": {
+          "subject": "航班延误通知 - {flight_number}",
+          "body": "尊敬的{customer_name}，\n\n非常抱歉通知您，您的航班{flight_number}因{delay_reason}延误约{delay_minutes}分钟。\n\n新的预计起飞时间：{new_departure_time}\n\n请关注航班动态，给您带来不便敬请谅解。"
+        },
+        "compensation_issued": {
+          "subject": "补偿确认 - 案例{case_id}",
+          "body": "尊敬的{customer_name}，\n\n关于您的航班{flight_number}延误，我们已为您安排以下补偿：\n{compensation_details}\n\n请保留相关收据以便报销。\n\n再次为给您带来的不便致歉。"
+        }
+      }
+    },
+    "check_status": {
+      "description": "Check email delivery status",
+      "required_params": ["message_id"],
+      "success_response": {
+        "message_id": "{message_id}",
+        "delivered": true,
+        "opened": false,
+        "delivered_at": "{now}"
+      }
+    }
+  }
+}

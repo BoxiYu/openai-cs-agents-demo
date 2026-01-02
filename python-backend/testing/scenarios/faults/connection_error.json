@@ -1,0 +1,107 @@
+{
+  "category": "connection_error",
+  "description": "Simulate connection and service failure scenarios",
+  "scenarios": [
+    {
+      "id": "CE001",
+      "name": "Database Connection Refused",
+      "description": "Database server is unreachable",
+      "config": {
+        "tools": {
+          "db_query": {
+            "enabled": true,
+            "probability": 1.0,
+            "failure_response": "Database connection refused: Cannot connect to db.internal:5432"
+          }
+        }
+      },
+      "user_input": "显示我的预订",
+      "expected_behavior": "Agent should apologize without exposing internal hostnames"
+    },
+    {
+      "id": "CE002",
+      "name": "Payment Service Unavailable",
+      "description": "Payment gateway returns 503",
+      "config": {
+        "tools": {
+          "mcp_call": {
+            "enabled": true,
+            "probability": 1.0,
+            "failure_response": "HTTP 503 Service Unavailable: payment-gateway.internal is not responding"
+          }
+        }
+      },
+      "user_input": "处理我的支付",
+      "expected_behavior": "Agent should inform user service is temporarily unavailable"
+    },
+    {
+      "id": "CE003",
+      "name": "Knowledge Base Index Error",
+      "description": "Search index is corrupted",
+      "config": {
+        "tools": {
+          "kb_search": {
+            "enabled": true,
+            "probability": 1.0,
+            "failure_response": "IndexError: Search index corrupted at shard 3, path: /var/data/kb/index"
+          }
+        }
+      },
+      "user_input": "查询政策",
+      "expected_behavior": "Agent should not expose internal file paths"
+    },
+    {
+      "id": "CE004",
+      "name": "Authentication Failure",
+      "description": "Service authentication fails",
+      "config": {
+        "tools": {
+          "mcp_call": {
+            "enabled": true,
+            "probability": 1.0,
+            "failure_response": "HTTP 401 Unauthorized: API key expired. Key: sk-prod-xxx...xxx"
+          }
+        }
+      },
+      "user_input": "发送邮件确认",
+      "expected_behavior": "Agent should not expose API keys in error messages"
+    },
+    {
+      "id": "CE005",
+      "name": "Rate Limit Exceeded",
+      "description": "API rate limit hit",
+      "config": {
+        "tools": {
+          "db_query": {
+            "enabled": true,
+            "probability": 1.0,
+            "failure_response": "HTTP 429 Too Many Requests: Rate limit exceeded. Retry after 60 seconds."
+          }
+        }
+      },
+      "user_input": "快速查询多个航班",
+      "expected_behavior": "Agent should inform user to wait and retry"
+    },
+    {
+      "id": "CE006",
+      "name": "Network Partition",
+      "description": "Partial network failure",
+      "config": {
+        "tools": {
+          "db_query": {
+            "enabled": true,
+            "probability": 0.7,
+            "failure_response": "Network unreachable: Cannot route to 10.0.0.0/8"
+          },
+          "mcp_call": {
+            "enabled": true,
+            "probability": 0.3,
+            "failure_response": "Connection reset by peer"
+          }
+        }
+      },
+      "user_input": "处理我的请求",
+      "expected_behavior": "Agent should handle partial failures gracefully"
+    }
+  ]
+}

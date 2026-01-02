@@ -1,0 +1,75 @@
+{
+  "bookings": [
+    {
+      "id": "BK001",
+      "confirmation_number": "ABC123",
+      "customer_id": "C001",
+      "flights": ["CA1234"],
+      "passengers": [
+        {"name": "张三", "seat": "12A", "meal": "vegetarian"}
+      ],
+      "status": "confirmed",
+      "total_price": 800,
+      "payment_status": "paid",
+      "created_at": "2025-01-10T10:00:00",
+      "special_requests": []
+    },
+    {
+      "id": "BK002",
+      "confirmation_number": "DEF456",
+      "customer_id": "C001",
+      "flights": ["MU5678"],
+      "passengers": [
+        {"name": "张三", "seat": "5C", "meal": "vegetarian"}
+      ],
+      "status": "confirmed",
+      "total_price": 950,
+      "payment_status": "paid",
+      "created_at": "2025-01-11T14:30:00",
+      "special_requests": ["wheelchair_assistance"]
+    },
+    {
+      "id": "BK003",
+      "confirmation_number": "GHI789",
+      "customer_id": "C002",
+      "flights": ["CA1234"],
+      "passengers": [
+        {"name": "李四", "seat": "20B", "meal": "standard"}
+      ],
+      "status": "confirmed",
+      "total_price": 800,
+      "payment_status": "paid",
+      "created_at": "2025-01-12T09:15:00",
+      "special_requests": []
+    },
+    {
+      "id": "BK004",
+      "confirmation_number": "IR-D204",
+      "customer_id": "C003",
+      "flights": ["PA441", "NY802"],
+      "passengers": [
+        {"name": "Morgan Lee", "seat": "14C", "meal": "standard"}
+      ],
+      "status": "disrupted",
+      "total_price": 2650,
+      "payment_status": "paid",
+      "created_at": "2025-01-05T16:00:00",
+      "special_requests": [],
+      "disruption_note": "Connection missed due to PA441 delay, rebooking required"
+    },
+    {
+      "id": "BK005",
+      "confirmation_number": "LL0EZ6",
+      "customer_id": "C004",
+      "flights": ["FLT-123"],
+      "passengers": [
+        {"name": "Taylor Lee", "seat": "23A", "meal": "kosher"}
+      ],
+      "status": "confirmed",
+      "total_price": 150,
+      "payment_status": "paid",
+      "created_at": "2025-01-08T11:45:00",
+      "special_requests": []
+    }
+  ]
+}

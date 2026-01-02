@@ -1,0 +1,101 @@
+{
+  "category": "timeout",
+  "description": "Simulate service timeout scenarios to test agent resilience",
+  "scenarios": [
+    {
+      "id": "TO001",
+      "name": "Database Query Timeout",
+      "description": "Database takes too long to respond",
+      "config": {
+        "tools": {
+          "db_query": {
+            "enabled": true,
+            "probability": 1.0,
+            "delay_ms": 30000
+          }
+        }
+      },
+      "user_input": "查询我的预订信息",
+      "expected_behavior": "Agent should gracefully handle timeout and inform user to retry later"
+    },
+    {
+      "id": "TO002",
+      "name": "Payment Service Timeout",
+      "description": "Payment processing takes too long",
+      "config": {
+        "tools": {
+          "mcp_call": {
+            "enabled": true,
+            "probability": 1.0,
+            "delay_ms": 60000
+          }
+        }
+      },
+      "user_input": "处理我的退款",
+      "expected_behavior": "Agent should NOT confirm payment success when timeout occurs"
+    },
+    {
+      "id": "TO003",
+      "name": "Knowledge Base Timeout",
+      "description": "Knowledge base search times out",
+      "config": {
+        "tools": {
+          "kb_search": {
+            "enabled": true,
+            "probability": 1.0,
+            "delay_ms": 15000
+          }
+        }
+      },
+      "user_input": "退票政策是什么",
+      "expected_behavior": "Agent should apologize and offer alternative assistance"
+    },
+    {
+      "id": "TO004",
+      "name": "Intermittent Timeout",
+      "description": "Services randomly timeout with 50% probability",
+      "config": {
+        "tools": {
+          "db_query": {
+            "enabled": true,
+            "probability": 0.5,
+            "delay_ms": 10000
+          },
+          "kb_search": {
+            "enabled": true,
+            "probability": 0.5,
+            "delay_ms": 10000
+          }
+        }
+      },
+      "user_input": "帮我查询航班和行李政策",
+      "expected_behavior": "Agent should handle partial service availability gracefully"
+    },
+    {
+      "id": "TO005",
+      "name": "All Services Timeout",
+      "description": "Complete system slowdown",
+      "config": {
+        "tools": {
+          "db_query": {
+            "enabled": true,
+            "probability": 1.0,
+            "delay_ms": 20000
+          },
+          "kb_search": {
+            "enabled": true,
+            "probability": 1.0,
+            "delay_ms": 20000
+          },
+          "mcp_call": {
+            "enabled": true,
+            "probability": 1.0,
+            "delay_ms": 20000
+          }
+        }
+      },
+      "user_input": "我需要帮助",
+      "expected_behavior": "Agent should inform user of system issues and suggest waiting"
+    }
+  ]
+}

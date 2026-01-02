@@ -1,0 +1,49 @@
+{
+  "seat_maps": {
+    "CA1234": {
+      "aircraft": "Boeing 737-800",
+      "rows": 30,
+      "layout": "3-3",
+      "seats": [
+        {"seat": "1A", "class": "business", "status": "available", "price": 2500},
+        {"seat": "1B", "class": "business", "status": "available", "price": 2500},
+        {"seat": "1C", "class": "business", "status": "occupied", "passenger": "VIP", "price": 2500},
+        {"seat": "2A", "class": "business", "status": "available", "price": 2500},
+        {"seat": "2B", "class": "business", "status": "available", "price": 2500},
+        {"seat": "12A", "class": "economy", "status": "occupied", "passenger": "张三", "price": 800},
+        {"seat": "12B", "class": "economy", "status": "available", "price": 800},
+        {"seat": "12C", "class": "economy", "status": "available", "price": 800},
+        {"seat": "15A", "class": "economy", "status": "blocked", "reason": "emergency_exit", "price": 850},
+        {"seat": "15B", "class": "economy", "status": "blocked", "reason": "emergency_exit", "price": 850},
+        {"seat": "20A", "class": "economy", "status": "available", "price": 800},
+        {"seat": "20B", "class": "economy", "status": "occupied", "passenger": "李四", "price": 800},
+        {"seat": "20C", "class": "economy", "status": "available", "price": 800}
+      ]
+    },
+    "FLT-123": {
+      "aircraft": "Airbus A320neo",
+      "rows": 30,
+      "layout": "3-3",
+      "seats": [
+        {"seat": "1A", "class": "business", "status": "available", "price": 450},
+        {"seat": "1B", "class": "business", "status": "available", "price": 450},
+        {"seat": "23A", "class": "economy", "status": "occupied", "passenger": "Taylor Lee", "price": 150},
+        {"seat": "23B", "class": "economy", "status": "available", "price": 150},
+        {"seat": "23C", "class": "economy", "status": "available", "price": 150}
+      ]
+    },
+    "NY950": {
+      "aircraft": "Boeing 737 MAX 8",
+      "rows": 28,
+      "layout": "3-3",
+      "seats": [
+        {"seat": "1A", "class": "business", "status": "available", "price": 1100},
+        {"seat": "1B", "class": "business", "status": "available", "price": 1100},
+        {"seat": "2A", "class": "business", "status": "available", "price": 1100, "note": "front row, extra legroom"},
+        {"seat": "2B", "class": "business", "status": "available", "price": 1100, "note": "front row, extra legroom"},
+        {"seat": "10A", "class": "economy", "status": "available", "price": 400},
+        {"seat": "10B", "class": "economy", "status": "available", "price": 400}
+      ]
+    }
+  }
+}

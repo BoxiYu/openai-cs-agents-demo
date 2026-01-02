@@ -1,0 +1,123 @@
+{
+  "timestamp": "2025-12-31T17:04:33.189046",
+  "test_type": "supply_chain_security",
+  "phase": "P2-4",
+  "owasp_mapping": "LLM03: Supply Chain Vulnerabilities",
+  "summary": {
+    "total_vulnerabilities": 0,
+    "critical": 0,
+    "high": 1,
+    "unpinned_packages": 6,
+    "overall_risk": "medium"
+  },
+  "pip_audit": {
+    "status": "error",
+    "error": "The virtual environment was not created successfully because ensurepip is not\navailable.  On Debian/Ubuntu systems, you need to install the python3-venv\npackage using the following command.\n\n    apt install python3.12-venv\n\nYou may need to use sudo with that command.  After installing the python3-venv\npackage, recreate your virtual environment.\n\nFailing command: /tmp/tmp_nyawizj/bin/python3.12\n\n"
+  },
+  "safety_check": {
+    "status": "skipped",
+    "error": "safety not installed"
+  },
+  "requirements_analysis": {
+    "status": "analyzed",
+    "total_packages": 6,
+    "pinned_packages": 0,
+    "unpinned_packages": 6,
+    "packages": [
+      {
+        "name": "openai-agents",
+        "version": "unpinned",
+        "pinned": false
+      },
+      {
+        "name": "openai-chatkit",
+        "version": "unpinned",
+        "pinned": false
+      },
+      {
+        "name": "pydantic",
+        "version": "unpinned",
+        "pinned": false
+      },
+      {
+        "name": "fastapi",
+        "version": "unpinned",
+        "pinned": false
+      },
+      {
+        "name": "uvicorn",
+        "version": "unpinned",
+        "pinned": false
+      },
+      {
+        "name": "python-dotenv",
+        "version": "unpinned",
+        "pinned": false
+      }
+    ],
+    "risk_analysis": [
+      {
+        "package": "openai-agents",
+        "risk_type": "unpinned_version",
+        "note": "Version not pinned - supply chain risk"
+      },
+      {
+        "package": "openai-chatkit",
+        "risk_type": "unpinned_version",
+        "note": "Version not pinned - supply chain risk"
+      },
+      {
+        "package": "pydantic",
+        "risk_type": "high_risk_dependency",
+        "note": "This package handles sensitive operations"
+      },
+      {
+        "package": "pydantic",
+        "risk_type": "unpinned_version",
+        "note": "Version not pinned - supply chain risk"
+      },
+      {
+        "package": "fastapi",
+        "risk_type": "high_risk_dependency",
+        "note": "This package handles sensitive operations"
+      },
+      {
+        "package": "fastapi",
+        "risk_type": "unpinned_version",
+        "note": "Version not pinned - supply chain risk"
+      },
+      {
+        "package": "uvicorn",
+        "risk_type": "high_risk_dependency",
+        "note": "This package handles sensitive operations"
+      },
+      {
+        "package": "uvicorn",
+        "risk_type": "unpinned_version",
+        "note": "Version not pinned - supply chain risk"
+      },
+      {
+        "package": "python-dotenv",
+        "risk_type": "unpinned_version",
+        "note": "Version not pinned - supply chain risk"
+      }
+    ]
+  },
+  "model_provider_security": {
+    "status": "analyzed",
+    "findings": [
+      {
+        "type": "guardrail_concern",
+        "severity": "high",
+        "location": "airline/guardrails.py",
+        "note": "Potential guardrail disable/bypass code found"
+      }
+    ],
+    "model_provider": "OpenAI API (via Moonshot/Kimi)",
+    "security_notes": [
+      "Model API calls are made to third-party provider",
+      "API key management should follow security best practices",
+      "Consider implementing request signing and rate limiting"
+    ]
+  }
+}

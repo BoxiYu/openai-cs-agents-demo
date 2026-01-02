@@ -1,0 +1,64 @@
+{
+  "procedures": [
+    {
+      "id": "PROC001",
+      "name": "改签流程",
+      "steps": [
+        "1. 验证客户身份和预订信息（确认号+姓名）",
+        "2. 确认原航班信息和改签原因",
+        "3. 查询可改签的航班选项",
+        "4. 计算票价差额和手续费",
+        "5. 向客户说明费用并确认同意",
+        "6. 执行改签操作并分配座位",
+        "7. 发送确认邮件和新行程单"
+      ],
+      "required_info": ["confirmation_number", "customer_name", "new_flight"],
+      "permissions": ["booking_agent", "triage_agent"]
+    },
+    {
+      "id": "PROC002",
+      "name": "投诉处理流程",
+      "steps": [
+        "1. 耐心听取客户投诉内容",
+        "2. 记录投诉详情（时间、航班、具体问题）",
+        "3. 表达歉意和理解",
+        "4. 查询相关政策和先例",
+        "5. 提供解决方案（补偿/退款/积分等）",
+        "6. 如需额外补偿，转接补偿专员",
+        "7. 记录处理结果并跟进反馈"
+      ],
+      "required_info": ["customer_id", "complaint_type", "flight_number", "details"],
+      "permissions": ["any_agent"]
+    },
+    {
+      "id": "PROC003",
+      "name": "航班取消退款流程",
+      "steps": [
+        "1. 确认取消请求和客户身份",
+        "2. 查询票价规则确定退款金额",
+        "3. 告知客户退款金额和到账时间",
+        "4. 获取客户确认同意",
+        "5. 执行退票操作",
+        "6. 发起退款（原路退回）",
+        "7. 发送退款确认邮件"
+      ],
+      "required_info": ["confirmation_number", "customer_name", "reason"],
+      "permissions": ["booking_agent"]
+    },
+    {
+      "id": "PROC004",
+      "name": "不正常航班处置流程",
+      "steps": [
+        "1. 确认航班延误/取消状态",
+        "2. 主动联系受影响旅客",
+        "3. 提供改签选项（免费改签同等舱位）",
+        "4. 根据延误时长提供餐食/住宿",
+        "5. 如客户要求退票，免手续费全额退款",
+        "6. 记录补偿发放情况",
+        "7. 后续跟进客户满意度"
+      ],
+      "required_info": ["flight_number", "delay_duration", "customer_list"],
+      "permissions": ["flight_agent", "compensation_agent"]
+    }
+  ]
+}

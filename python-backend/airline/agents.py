@@ -22,7 +22,8 @@ from .tools import (
     update_seat,
 )
 
-MODEL = "gpt-5.2"
+# 使用 Kimi K2 模型
+MODEL = "kimi-k2-0905-preview"
 
 
 def seat_services_instructions(

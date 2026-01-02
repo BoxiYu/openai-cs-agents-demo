@@ -1,6 +1,8 @@
 from __future__ import annotations as _annotations
 
+import os
 from pydantic import BaseModel
+from openai import AsyncOpenAI
 
 from agents import (
     Agent,
@@ -9,9 +11,22 @@ from agents import (
     Runner,
     TResponseInputItem,
     input_guardrail,
+    set_default_openai_api,
+    set_default_openai_client,
+    set_tracing_disabled,
 )
 
-GUARDRAIL_MODEL = "gpt-4.1-mini"
+# Configure OpenAI client for Kimi API (must be done before creating agents)
+_client = AsyncOpenAI(
+    base_url=os.environ.get('OPENAI_BASE_URL', 'https://api.openai.com/v1'),
+    api_key=os.environ.get('OPENAI_API_KEY'),
+)
+set_default_openai_client(client=_client, use_for_tracing=False)
+set_default_openai_api("chat_completions")
+set_tracing_disabled(disabled=True)
+
+# 使用 Kimi K2 模型
+GUARDRAIL_MODEL = "kimi-k2-0905-preview"
 
 
 class RelevanceOutput(BaseModel):
